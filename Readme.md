@@ -5,6 +5,7 @@
 
 A <span style="color:green"><strong>simple and efficient Todo API</strong></span> built with <span style="color:green"><strong>Node.js, Express, MongoDB</strong></span>, and <span style="color:purple"><strong>JWT authentication</strong></span>.
 
+
 ## Table of Contents
 - [📜 Introduction](#-introduction)
 - [🔧 Prerequisites](#-prerequisites)
