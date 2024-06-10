@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo API Documentation</title>
+    <meta name="description" content="Comprehensive guide on how to use the Todo API with examples and documentation.">
+    <meta name="keywords" content="Todo API, task management API, Todo API documentation, REST API">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+        }
+        header, footer {
+            background: #333;
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        header p {
+            font-size: 1.2em;
+        }
+        .container {
+            display: flex;
+            margin: 2em auto;
+            max-width: 1200px;
+            padding: 0 2em;
+        }
+        nav {
+            flex: 1;
+            max-width: 20%;
+            margin-right: 2em;
+        }
+        nav h2 {
+            font-size: 1.5em;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0.5em 0;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #2196f3;
+        }
+        main {
+            flex: 4;
+            background: #fff;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2, h3 {
+            color: #333;
+        }
+        h2 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 0.5em;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 1em;
+            border-radius: 5px;
+            overflow: auto;
+        }
+        code {
+            color: #c7254e;
+            background: #f9f2f4;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            background:         #e7f3fe;
+            margin: 0.5em 0;
+            padding: 1em;
+            border-left: 5px solid #2196f3;
+        }
+        ul li strong {
+            display: block;
+        }
+        .social-buttons a {
+            margin: 0 10px;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .social-buttons a.twitter {
+            background: #1da1f2;
+        }
+        .social-buttons a.linkedin {
+            background: #0077b5;
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebPage",
+      "name": "Todo API Documentation",
+      "description": "Comprehensive guide on how to use the Todo API with examples and documentation.",
+      "url": "https://your-github-pages-link"
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-tasks"></i> Todo API Documentation</h1>
+        <p>Learn how to integrate and use the Todo API in your applications.</p>
+    </header>
+    <div class="container">
+        <nav>
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#introduction"><i class="fas fa-info-circle"></i> Introduction</a></li>
+                <li><a href="#authentication"><i class="fas fa-key"></i> Authentication</a></li>
+                <li><a href="#endpoints"><i class="fas fa-code-branch"></i> API Endpoints</a></li>
+                <li><a href="#examples"><i class="fas fa-clipboard-list"></i> Examples</a></li>
+                <li><a href="#error-codes"><i class="fas fa-exclamation-triangle"></i> Error Codes</a></li>
+                <li><a href="#rate-limiting"><i class="fas fa-tachometer-alt"></i> Rate Limiting</a></li>
+                <li><a href="#versioning"><i class="fas fa-code-branch"></i> Versioning</a></li>
+                <li><a href="#use-cases"><i class="fas fa-lightbulb"></i> Use Cases</a></li>
+                <li><a href="#glossary"><i class="fas fa-book"></i> Glossary</a></li>
+                <li><a href="#feedback"><i class="fas fa-comment-dots"></i> Feedback</a></li>
+            </ul>
+        </nav>
+        <main>
+            <section id="introduction">
+                <h2><i class="fas fa-info-circle"></i> Introduction</h2>
+                <p>The Todo API allows you to manage your todo lists programmatically. Below are the available endpoints and their usage.</p>
+            </section>
+            <section id="authentication">
+                <h2><i class="fas fa-key"></i> Authentication</h2>
+                <p>All endpoints require a valid API key. Include the API key in the Authorization header of your requests:</p>
+                <pre><code>Authorization: Bearer {api_key}</code></pre>
+                <p>To obtain an API key, register on our website and navigate to the API keys section of your account settings.</p>
+            </section>
+            <section id="endpoints">
+                <h2><i class="fas fa-code-branch"></i> API Endpoints</h2>
+                <h3><i class="fas fa-list"></i> GET /todos</h3>
+                <p>Fetches all todo items.</p>
+                <pre><code>GET https://todo-api-yry4.onrender.com/todos</code></pre>
+                <h3><i class="fas fa-plus-circle"></i> POST /todos</h3>
+                <p>Creates a new todo item. Add the content in the request JSON body.</p>
+                <pre><code>POST https://todo-api-yry4.onrender.com/todos
+Headers:
+    Authorization: Bearer {api_key}
+Body:
+{
+    "title": "Buy groceries"
+}</code></pre>
+                <h3><i class="fas fa-search"></i> GET /todos/:id</h3>
+                <p>Fetches a single todo item by its ID.</p>
+                <pre><code>GET https://todo-api-yry4.onrender.com/todos/{id}
+Headers:
+    Authorization: Bearer {api_key}</code></pre>
+                <h3><i class="fas fa-edit"></i> PATCH /todos/:id</h3>
+                <p>Updates a todo item by its ID. You can update the title or the completion status. Add the content in the request JSON body.</p>
+                <pre><code>PATCH https://todo-api-yry4.onrender.com/todos/{id}
+Headers:
+    Authorization: Bearer {api_key}
+Body:
+{
+     "completed": true
+}</code></pre>
+
+    (or)
+    you can update the title too..
+    <pre><code>
+ Headers:
+    Authorization: Bearer {api_key}
+ Body:
+    {
+        "title":"updated title",
+        "completed": true
+    }
+    </code></pre>
+                <h3><i class="fas fa-trash"></i> DELETE /todos/:id</h3>
+                <p>Deletes a todo item by its ID.</p>
+                <pre><code>DELETE https://todo-api-yry4.onrender.com/todos/{id}
+Headers:
+    Authorization: Bearer {api_key}</code></pre>
+            </section>
+            <section id="examples">
+                <h2><i class="fas fa-clipboard-list"></i> Examples</h2>
+                <p>Here are some example requests you can try using Thunder Client or Postman:</p>
+                <h3><i class="fas fa-plus-circle"></i> Create a Todo</h3>
+                <pre><code>POST /todos
+Headers: 
+    Authorization: Bearer {api_key}
+Body:
+{
+    "title": "Buy groceries"
+}</code></pre>
+                <h3><i class="fas fa-list"></i> Get All Todos</h3>
+                <pre><code>GET /todos
+Headers:
+    Authorization: Bearer {api_key}</code></pre>
+            </section>
+            <section id="error-codes">
+                <h2><i class="fas fa-exclamation-triangle"></i> Error Codes</h2>
+                <p>Below are some common error codes you might encounter:</p>
+                <ul>
+                    <li><strong><i class="fas fa-exclamation-circle"></i> 400 Bad Request</strong>: The request could not be understood or was missing required parameters.</li>
+                    <li><strong><i class="fas fa-lock"></i> 401 Unauthorized</strong>: Authentication failed or user does not have permissions for the desired action.</li>
+                    <li><strong><i class="fas fa-search-minus"></i> 404 Not Found</strong>: The requested resource could not be found.</li>
+                    <li><strong><i class="fas fa-server"></i> 500 Internal Server Error</strong>: An error occurred on the server.</li>
+                </ul>
+            </section>
+            <section id="rate-limiting">
+                <h2><i class="fas fa-tachometer-alt"></i> Rate Limiting</h2>
+                <p>You can make up to 100 requests per hour. Exceeding this limit will result in a <strong>429 Too Many Requests</strong> response.</p>
+            </section>
+            <section id="versioning">
+                <h2><i class="fas fa-code-branch"></i> Versioning</h2>
+                <p>The current version of the API is v1. Specify the version in the URL, e.g., <code>/v1/todos</code>. Deprecated endpoints will be removed after a notice period.</p>
+            </section>
+            <section id="use-cases">
+                <h2><i class="fas fa-lightbulb"></i> Use Cases</h2>
+                <p>Here are some scenarios where you can use the Todo API:</p>
+                <ul>
+                    <li><strong>Personal Task Management:</strong> Manage your daily tasks and to-do lists.</li>
+                    <li><strong>Team Collaboration:</strong> Share and manage tasks within a team.</li>
+                    <li><strong>Project Management:</strong> Track project tasks and deadlines.</li>
+                    <li><strong>Productivity Apps:</strong> Integrate with productivity tools for better task management.</li>
+                    <li><strong>Reminder Services:</strong> Create reminders for important tasks.</li>
+                    <li><strong>Automated Task Scheduling:</strong> Automate task creation and updates.</li>
+                    <li><strong>Time Management:</strong> Track and manage time spent on tasks.</li>
+                    <li><strong>Client Management:</strong> Manage tasks for client projects.</li>
+                    <li><strong>Learning and Development:</strong> Track learning goals and progress.</li>
+                    <li><strong>Event Planning:</strong> Organize tasks for events and activities.</li>
+                </ul>
+            </section>
+            <section id="glossary">
+                <h2><i class="fas fa-book"></i> Glossary</h2>
+                <ul>
+                    <li><strong>API Key:</strong> A unique key used to authenticate requests.</li>
+                    <li><strong>Endpoint:</strong> A specific URL where API requests are sent.</li>
+                    <li><strong>Rate Limiting:</strong> Restricting the number of API requests within a time period.</li>
+                    <li><strong>Versioning:</strong> Managing changes to the API by releasing different versions.</li>
+                    <li><strong>HTTP Method:</strong> The action to be performed on the resource (GET, POST, PATCH, DELETE).</li>
+                </ul>
+            </section>
+            <section id="feedback">
+                <h2><i class="fas fa-comment-dots"></i> Feedback</h2>
+                <p>We value your feedback! Please <a href="mailto:hacker5656yoyo@gmail.com">email us</a> with any questions or suggestions.</p>
+            </section>
+            <section class="social-buttons">
+                <h2><i class="fas fa-share-alt"></i> Share this Documentation</h2>
+                <a class="twitter" href="https://twitter.com/share?url=https://your-github-pages-link" target="_blank"><i class="fab fa-twitter"></i> Tweet</a>
+                <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https://your-github-pages-link" target="_blank"><i class="fab fa-linkedin"></i> Share</a>
+            </section>
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Todo API | Last updated: June 10, 2024</p>
+    </footer>
+</body>
+</html>
