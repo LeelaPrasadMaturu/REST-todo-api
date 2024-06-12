@@ -1,0 +1,13 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "docs/api-documentation.html",
+        "use": "@vercel/static"
+      }
+    ],
+    "routes": [
+      { "src": "/(.*)", "dest": "docs/api-documentation.html" }
+    ]
+  }
+  
