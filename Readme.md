@@ -15,9 +15,14 @@ A <span style="color:green"><strong>simple and efficient Todo API</strong></span
   - [🔐 Log In](#-log-in)
   - [➕ Create Todo](#-create-todo)
   - [📋 Get Todos](#-get-todos)
-  - [🔄 Update Todo](#-update-todo)
-  - [❌ Delete Todo](#-delete-todo)
+ - [🔄 Update Todo](#-update-todo)
+ - [❌ Delete Todo](#-delete-todo)
 - [🛠️ API Routes](#️-api-routes)
+- [⚠️ Error Codes](#️-error-codes)
+- [🚦 Rate Limiting](#️-rate-limiting)
+- [🔐 Authentication](#️-authentication)
+- [📚 Glossary](#️-glossary)
+- [✉️ Feedback](#️-feedback)
 - [🤝 Contributing](#-contributing)
 - [📜 License](#-license)
 - [📬 Contact](#-contact)
@@ -59,6 +64,9 @@ Before you begin, ensure you have met the following requirements:
    npm start
    ```
 
+## Alternatively, you can directly use the hosted API at this link without cloning the entire project:
+https://todo-api-yry4.onrender.com
+
 ## 🚀 Usage
 You can use <span style="color:orange"><strong>Thunder Client (VS Code extension)</strong></span> or <span style="color:orange"><strong>Postman</strong></span> to interact with the API. Here are the available routes and how to use them
 
@@ -72,6 +80,10 @@ You can use <span style="color:orange"><strong>Thunder Client (VS Code extension
     "password": "password123"
   }
   ```
+- Example: https://todo-api-yry4.onrender.com/api/auth/signup (if you are using the hosted link)
+<br>
+ or <br>
+https://localhost:3000/api/auth/signup (if you have cloned the project)
 
 ### 🔐 Log In
 - **URL:** `/api/auth/login`
@@ -156,6 +168,34 @@ Get `_id` from here to do further tasks
 - `GET /api/todos` - Get all todos for the logged-in user
 - `PATCH /api/todos/:id` - Update a todo (partial update)
 - `DELETE /api/todos/:id` - Delete a todo
+
+## ⚠️ Error Codes
+Below are some common error codes you might encounter
+- <strong>400 Bad Request </strong>: The request could not be understood or was missing required parameters.
+- <strong>401 Unauthorized </strong>: Authentication failed or user does not have permissions for the desired action.
+- <strong>404 Not Found </strong>: The requested resource could not be found.
+- <strong>500 Internal Server Error </strong>: An error occurred on the server.
+
+## 🚦 Rate Limiting
+You can make up to 100 requests per hour. Exceeding this limit will result in a 429 Too Many Requests response.
+
+## 🔐 Authentication
+All endpoints require a valid API key. Include the API key in the Authorization header of your requests:
+``` bash
+Authorization: Bearer {api_key}
+```
+To obtain an API key, register on our website and navigate to the API keys section of your account settings.
+
+## 📚 Glossary
+- <strong>API Key </strong>:  A unique key used to authenticate requests.
+- <strong>Endpoint </strong>: A specific URL where API requests are sent.
+- <strong>Rate Limiting </strong>: Restricting the number of API requests within a time period.
+- <strong>Versioning </strong>: Managing changes to the API by releasing different versions.
+- <strong>HTTP Method </strong>: The action to be performed on the resource (GET, POST, PATCH, DELETE).
+
+## ✉️ Feedback
+We value your feedback! Please <strong>[Email us](mailto:leelaprasad.m22@iiits.in)</strong> with any questions or suggestions.
+
 
 ## 🤝 Contributing
 <strong>Contributions are welcome!</stromg> Please fork the repository and create a pull request with your changes. Feel free to open issues for any bugs or feature requests.
