@@ -5,9 +5,13 @@ const bodyParser = require('body-parser');
 const todoRoutes = require('./routes/todoRoutes');
 const authRoutes = require('./routes/authRoutes');
 const authMiddleware = require('./middleware/authMiddleware');
+const NodeCache = require('node-cache');
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+// Initialize cache
+const cache = new NodeCache();
 
 // Middleware
 app.use(bodyParser.json());
@@ -19,7 +23,10 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/todos', authMiddleware, todoRoutes);
+app.use('/api/todos', (req, res, next) => {
+    req.cache = cache;
+    next();
+}, authMiddleware, todoRoutes);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

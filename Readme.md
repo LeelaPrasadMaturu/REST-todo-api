@@ -3,7 +3,7 @@
 
 # <img src="todo-icon.png" alt="Todo API" width="40" height="40"> Todo API
 
-A <span style="color:green"><strong>simple and efficient Todo API</strong></span> built with <span style="color:green"><strong>Node.js, Express, MongoDB</strong></span>, and <span style="color:purple"><strong>JWT authentication</strong></span>.
+A <span style="color:green"><strong>simple and efficient Todo API</strong></span> built with <span style="color:green"><strong>Node.js, Express, MongoDB</strong></span>, and <span style="color:purple"><strong>JWT authentication</strong></span>.This API follows RESTful principles, ensuring stateless communication, use of standard HTTP methods, and clear resource-based URL structures.
 
 
 ## Table of Contents
@@ -28,11 +28,25 @@ A <span style="color:green"><strong>simple and efficient Todo API</strong></span
 - [📬 Contact](#-contact)
 
 ## 📜 Introduction
-Welcome to the <span style="color:blue"><strong>Todo API</strong></span>! This API allows you to manage your todos with features such as creating, reading, updating, and deleting todos. It also includes user authentication using JSON Web Tokens (JWT).
+Welcome to the <span style="color:blue"><strong>Todo API</strong></span>! This API allows you to manage your todos with features such as creating, reading, updating, and deleting todos. It also includes user authentication using JSON Web Tokens (JWT).The API is designed following RESTful principles to ensure stateless, scalable, and efficient interaction with clients.
+
 
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 ![Express](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+
+# 📜 Why This API is RESTful
+ This API adheres to RESTful principles in the following ways:
+- <strong>Resource-Based URLs </strong>: Each resource (todos and authentication) is accessed using standard HTTP methods (GET, POST, PATCH, DELETE) with clear and meaningful URLs (`/api/todos`, `/api/auth/signup`, etc.).
+- <strong> HTTP Methods </strong>: Different HTTP methods are used to perform different actions on resources. For example:
+   - GET `/api/todos`: Retrieves all todos.
+   - POST `/api/todos`: Creates a new todo.
+   - PATCH `/api/todos/:id`: Updates a specific todo.
+   - DELETE `/api/todos/:id`: Deletes a specific todo
+- <strong> Statelessness </strong>: The API is stateless, meaning each request from a client to the server must contain all the information necessary to understand and fulfill the request. This simplifies server implementation and improves scalability.
+- <strong>Use of HTTP Status Codes</strong>: The API uses appropriate HTTP status codes to indicate the success or failure of an API request (e.g., 200 OK, 201 Created, 400 Bad Request, 401 Unauthorized, 404 Not Found).
+-<strong> JSON Format</strong>: Data is exchanged in JSON format, which is lightweight and easy to parse by client applications.
+- <strong>Authentication</strong>: Authentication is handled using JWT (JSON Web Tokens), providing a secure way to authenticate API requests without needing to maintain session state on the server.
 
 ## 🔧 Prerequisites
 Before you begin, ensure you have met the following requirements:
@@ -134,6 +148,13 @@ https://localhost:3000/api/auth/signup (if you have cloned the project)
 ```
 The `_id` field in each todo object is the unique ID for that todo task.
 Get `_id` from here to do further tasks
+
+
+### 📜 Cache-based API
+This API employs caching to improve performance and reduce response times for frequently requested data. When a GET request is made for todos, the API caches the response for a certain duration, typically 60 seconds. Subsequent requests for the same resource within this period retrieve data from the cache, significantly reducing response times and server load.
+
+For Eg : Send a Get Request to  `api/todos` , Frist time , it takes around 190ms , send a one more get request to same Route within 60 sec( we designed cache-storage for 60 sec) Now observe the time taken it 10 times lesser than frist request , it probably around 15 ms
+<hr>
 
 ### 🔄 Update Todo
 - **URL:** `/api/todos/:id`
