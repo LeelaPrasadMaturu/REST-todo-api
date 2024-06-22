@@ -1,7 +1,7 @@
 
 
 
-# <img src="todo-icon.png" alt="Todo API" width="40" height="40"> Todo API
+# <img src="todo-icon.png" alt="Todo API" width="40" height="40"> Restful Todo API
 
 A <span style="color:green"><strong>simple and efficient Todo API</strong></span> built with <span style="color:green"><strong>Node.js, Express, MongoDB</strong></span>, and <span style="color:purple"><strong>JWT authentication</strong></span>.This API follows RESTful principles, ensuring stateless communication, use of standard HTTP methods, and clear resource-based URL structures.
 
